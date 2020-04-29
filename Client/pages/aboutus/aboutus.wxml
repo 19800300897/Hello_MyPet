@@ -1,0 +1,22 @@
+<nav
+  title="关于"
+  go-back
+  dark
+  bgColor="transparent"
+></nav>
+
+<image src='aboutus.png' mode='aspectFill' class='bg-header-img'></image>
+
+<container>
+  <!-- 内容 -->
+  <view class='body'>
+    <view wx:for="{{data}}" wx:key="{{index}}">
+      <view class='title'>
+        <text>{{item.title}}</text>
+      </view>
+      <view class='data'>
+        <text>{{item.data}}</text>
+      </view>
+    </view>
+  </view>
+</container>

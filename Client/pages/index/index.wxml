@@ -1,0 +1,74 @@
+<!--index.wxml-->
+<import src="../index/head.wxml" />
+<view class="container">
+  <template is="head" data="{{title: '创造专属萌宠 ฅ ฅ'}}"/>
+
+  <view class="page-body">
+    <form catchsubmit="formSubmit" catchreset="formReset">
+    <view class="page-section">
+      <view class="page-section-title">选择你的萌宠吧</view>
+       <view class="page-section page-section-gap">
+    <swiper class='bannerSwiper' previous-margin="54rpx" next-margin='54rpx' indicator-dots="true" indicator-color='#B5B5B5' indicator-active-color='#fff' bindchange='onChange' circular='true'>
+      <block wx:for="{{banner}}" wx:key="key">
+        <swiper-item >
+          <image class="{{index==xindex?'imageBanner':'imageBanner_small'}}" data-index="{{index}}" data-item="item" src="{{item}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+            
+    </view>
+    </view>
+
+      <view class="page-section">
+        <view class="page-section-title">名字</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="pname" placeholder="为它起一个独一无二的名字吧！" />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="page-section">
+         <view class="page-section-title">性别</view>
+        <radio-group name="gender" >
+          <label><radio value="公"/>公</label>
+          <label><radio value="母"/>母</label>
+        </radio-group>
+      </view>
+      <view class="page-section">
+        <view class="page-section-title">出生日期</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+          <!--<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" >
+              <view class="weui-input" name="age">{{array[index]}}</view>
+            </picker> -->
+            
+  <picker mode="date" value="{{date}}" start="1978-01-01" end="{{dates}}" bindchange="bindPickerChange">  
+    <view class="weui-input" name="age" >  
+     {{dates}}  
+    </view>  
+  </picker>
+          </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="btn-area">
+        <button type="primary" formType="submit"  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="GotUserInfo">确定</button>
+        
+      </view>
+    </form>
+  </view>
+<mp-halfScreenDialog 
+          bindbuttontap="buttontap"
+          show="{{type}}"
+          maskClosable="{{false}}" 
+          title="每人只能养一只宠物哦！" 
+          subTitle="╮( •́ω•̀ )╭"
+          desc="如果您希望更换宠物，请点击“更换”；不更换宠物请点击“进入小窝”~"
+          tips="重要提醒：更换宠物会降低您的养宠信用哦~"
+          buttons="{{buttons}}"
+        ></mp-halfScreenDialog>
+</view>

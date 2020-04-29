@@ -1,0 +1,17 @@
+{
+  "cloud":true,
+  "pages":[
+      "pages/index/index",
+    "pages/test1/openid",
+    "pages/aboutus/aboutus"
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "萌宠创造营",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

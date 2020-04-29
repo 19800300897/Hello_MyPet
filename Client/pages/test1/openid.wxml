@@ -1,0 +1,66 @@
+<!--pages/index/page02.wxml-->
+<view class='container'>
+<image class="b_image" src="image/b_image.jpg"></image>
+<view class='weather-wrapper'>
+
+	<view class="dog_vs1">
+		<view>
+			<label>宠物档案</label>
+		</view>
+	</view>
+	<view class="dog_vs">
+		<view>
+			<label>{{pname}}</label>
+		</view>
+		<view>
+			<label>{{gender}}</label>
+		</view>
+		<view>
+			<label>{{age}}</label>
+		</view>
+	</view>
+
+	<view class="i_pos">
+		<image src="{{queryPath}}" mode='widthFix' class="i_mage"></image>
+	</view>
+
+	<view class="v_button">
+		<view class="vb">
+			<button class='btn1'>
+				<image class='btnImg' src='image/icon_05.png'></image>
+				<view>聊天</view>
+			</button>
+		</view>
+		<view class="vb">
+			<button class='btn2'>
+				<image class='btnImg' src='image/icon_05.png'></image>
+				<view>合照</view>
+			</button>
+		</view>
+		<view class="vb">
+			<button class='btn3' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
+				<image class='btnImg' src='image/icon_05.png'></image>
+				<view>生成海报</view>
+			</button>
+		</view>
+
+	</view> 
+          <view class="weui-footer weui-footer_fixed-bottom">
+            <view class="weui-footer__links">
+                <navigator url="../aboutus/aboutus" class="weui-footer__link">萌宠创造营</navigator>
+            </view>
+            <view class="weui-footer__text">Copyright © 萌宠管理局</view>
+        </view>
+</view>
+  <!--保存至相册，主界面不会显示的  -->
+    <view class='imagePathBox' hidden="{{maskHidden == false}}">
+      <image src="{{imagePath}}" class='shengcheng'></image>
+      <button style="width:40vw" class='baocun' bindtap='baocun'>保存至相册</button>
+			<button style="width:30vw" bindtap='closePos' class='quxiao'>取消</button> 
+    </view>
+   <view hidden="{{maskHidden == false}}" class="mask">
+  <view class="canvas-box">
+      <canvas  style="width: 375px;height: 667px;position:fixed;" canvas-id="mycanvas"/>
+  </view>  
+  </view> 
+</view>
