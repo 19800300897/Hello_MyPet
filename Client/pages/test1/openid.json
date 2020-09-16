@@ -1,5 +1,8 @@
 {
   "usingComponents": {
-    "poster": "../components/wxa-plugin-canvas/poster"
-    }
+    "poster": "../components/wxa-plugin-canvas/poster",
+    "mp-dialog": "../components/dialog/dialog"
+    },
+    "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark" 
 }

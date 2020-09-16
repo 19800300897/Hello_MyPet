@@ -1,4 +1,5 @@
 //app.js
+var jsonList = require('data/json.js'); 
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -11,6 +12,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    questionList: jsonList.questionList  // 拿到答题数据
   }
 })

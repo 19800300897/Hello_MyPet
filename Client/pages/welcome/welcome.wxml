@@ -1,0 +1,8 @@
+<!--pages/welcome/welcome.wxml-->
+<view class="container">
+    <image class="bg" src="../images/welcome.jpg"></image>
+    <view class="journey-container" bindtap="onTap">
+    	<image class='btnImg' src='../images/icon_05.png'></image>
+    <text class="journey">开启养宠之旅</text>
+    </view>
+</view>

@@ -1,7 +1,8 @@
 {
-  "navigationBarTitleText": "form",
+  "navigationBarTitleText": "萌宠创造营",
   "component":true,
   "usingComponents": {
-    "mp-halfScreenDialog": "../components/half-screen-dialog/half-screen-dialog"
+    "mp-halfScreenDialog": "../components/half-screen-dialog/half-screen-dialog",
+    "mp-dialog": "../components/dialog/dialog"
   }
 }

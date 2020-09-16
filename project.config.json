@@ -7,8 +7,9 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
@@ -27,9 +28,9 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.0",
+	"libVersion": "2.11.1",
 	"appid": "wxa800d0b6df106fdd",
-	"projectname": "Page2",
+	"projectname": "Petpet",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

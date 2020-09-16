@@ -1,0 +1,27 @@
+<view class="detail-container">
+  <image class="head-image" src="{{list._image}}"></image>
+  
+  <text class="title">{{list._titles}}</text>
+  <view class="author-date">
+    <text class="author">作者：{{list._author}}</text>
+    <text class="const-text">来源：{{list._source}}</text>
+  </view>
+  <view class="tool">
+    <view class="circle-img">
+      <image src="../images/_cat.png"></image>
+      <image class="share-img" src="../images/_dog.png"></image>
+    </view>
+    <view class="horizon"></view>
+  </view>
+  <rich-text class="detail" nodes="{{detile_contents}}"></rich-text>
+    <view class="tool">
+    <view class="circle-img">
+      <image src="../images/_cat.png"></image>
+      <image class="share-img" src="../images/_dog.png"></image>
+    </view>
+    <view class="horizon"></view>
+  </view>
+  <view class="drr">
+  <text class="date">网页链接：{{list._reprint}}</text>
+  </view>
+</view>

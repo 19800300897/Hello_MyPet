@@ -1,10 +1,32 @@
 {
   "cloud":true,
   "pages":[
-      "pages/index/index",
-    "pages/test1/openid",
-    "pages/aboutus/aboutus"
+   
+    "pages/welcome/welcome",
+    "pages/index/index",
 
+    "pages/test1/openid",
+    "pages/test1/results/results",
+    "pages/test1/final/final",
+    
+    "pages/walk/walk",
+    "pages/aboutus/aboutus",
+    "pages/aboutus/ruying/ruying"
+  ],
+  "subpackages": [
+    {
+      "root": "package_3d_viewer",
+      "pages": [
+        "pages/camera/camera"
+      ]
+    },
+    {
+      "root": "readGuide",
+      "pages": [
+        "logs/logs",
+        "xiangqing/content"
+      ]
+    }
   ],
   "window":{
     "backgroundTextStyle":"light",

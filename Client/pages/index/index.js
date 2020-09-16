@@ -5,14 +5,19 @@ const app = getApp()
 Page({
   data: {
     array: ['点击这里选择年龄ฅฅ','0个月', '1个月', '3个月','6个月','一岁','两岁','三岁','四岁','五岁','六岁'],
-    banner:['cloud://test-855um.7465-test-855um-1301750668/cat1.JPG',
-          'cloud://test-855um.7465-test-855um-1301750668/cat2.JPG',
-          'cloud://test-855um.7465-test-855um-1301750668/cat3.JPG',
-          'cloud://test-855um.7465-test-855um-1301750668/dog1.JPG',
-           'cloud://test-855um.7465-test-855um-1301750668/dog2.JPG',
-           'cloud://test-855um.7465-test-855um-1301750668/dog3.JPG',
-           'cloud://test-855um.7465-test-855um-1301750668/dog4.JPG'
+    banner:['cloud://test-855um.7465-test-855um-1301750668/cat1.png',
+          'cloud://test-855um.7465-test-855um-1301750668/cat2.png',
+          'cloud://test-855um.7465-test-855um-1301750668/cat3.png',
+          'cloud://test-855um.7465-test-855um-1301750668/cat4.png',
+          'cloud://test-855um.7465-test-855um-1301750668/cat5.png',
+          'cloud://test-855um.7465-test-855um-1301750668/dog1.png',
+           'cloud://test-855um.7465-test-855um-1301750668/dog2.png',
+           'cloud://test-855um.7465-test-855um-1301750668/dog3.png',
+           'cloud://test-855um.7465-test-855um-1301750668/dog4.png',
+           'cloud://test-855um.7465-test-855um-1301750668/dog5.png',
   ],
+    showOneButtonDialog: false,
+    oneButton: [{text: '确定'}],
     index: 0,
     dates: '2016-11-08',
     xindex:0,
@@ -68,8 +73,23 @@ Page({
 //提交表单
   formSubmit(e) {
     var pname = e.detail.value.pname
-    var age = this.data.dates
     var gender = e.detail.value.gender
+    if (pname == '') {
+      wx.showToast({
+        title: '宠物名字不能为空',
+        icon: "none"
+      })
+      return;
+    }
+    else if (gender == '') {
+      wx.showToast({
+        title: '宠物性别不能为空',
+        icon: "none"
+      })
+      return;
+    }
+    var age = this.data.dates
+
     var pid = this.data.xindex
     var openid = this.data.openid
     var data = [pname,age,gender,pid,openid]
@@ -111,12 +131,20 @@ Page({
           const petcollection = db.collection("pet")
           petcollection.add({
             data:{
-              name:pname,
+              pname:pname,
               age:age,
               gender:gender,
               pid:pid,
-              openid:openid
+              openid:openid,
+              rank:0,
+              greencard:0,
+              dktime:"Mon May 11 2020 15:50:29 GMT+0800 (中国标准时间)",
+              food:0,
+              fdtime:"Mon May 11 2020 15:50:29 GMT+0800 (中国标准时间)",
             }
+          })
+          wx.navigateTo({
+            url: '../test1/openid',
           })
         }
     },
@@ -136,27 +164,29 @@ Page({
         var pid = data[3]
         var openid = data[4]
         //云函数更新数据库
-        wx.cloud.callFunction({
-          name:'update',
-          data:{
-            pname:pname,
-            age:age,
-            gender:gender,
-            pid:pid,
-            openid,openid
-          },
-          success:res=>{
-            console.log('云函数执行修改方法成功')
-            console.log(res.result.errMsg)
-            if (res.result.errMsg == 'collection.update:ok') {          
+          db.collection('pet').where({
+            _openid:openid
+          }).update({
+            data: {
+              pname:pname,
+              age:age,
+              gender:gender,
+              pid:pid,
+              openid,openid,
+              rank:0,
+              greencard:0,
+              dktime:JSON.stringify("Mon May 11 2020 15:50:29 GMT+0800 (中国标准时间)"),
+              food:0,
+              fdtime:JSON.stringify("Mon May 11 2020 15:50:29 GMT+0800 (中国标准时间)"),
+            }
+          }).then(res=>{
+            console.log('云函数执行修改方法成功')      
             wx.navigateTo({
               url:'../test1/openid'
-            })
-            }
-          },
-          fail:console.error
-        })
-      }else{
+            })          
+          })
+        }
+      else{
         console.log("进入小窝")
         wx.navigateTo({
           url:'../test1/openid'
@@ -184,4 +214,31 @@ Page({
     })
     
   },
+  onTap:function(){
+    var openid = this.data.openid
+    db.collection('pet').where({
+      _openid:openid
+      }).get({
+      success:res=> {
+        var count = res.data.length
+        if(count>0){
+          wx.navigateTo({
+            url: '../test1/openid',
+          })
+        }
+        else{//没有宠物
+          console.log("没有宠物")
+          this.setData({
+            showOneButtonDialog:true
+          })
+        }
+      }
+      })
+
+   },
+   tapDialogButton(e) {
+    this.setData({
+        showOneButtonDialog: false
+    })
+},
 })

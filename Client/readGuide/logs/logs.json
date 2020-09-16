@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "饲养指南列表",
+  "usingComponents": {},
+  "onReachBottomDistance":0,
+  "enablePullDownRefresh": true
+}

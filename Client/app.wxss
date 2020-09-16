@@ -1,4 +1,4 @@
-
+@import 'weui.wxss';
 /* reset */
 page {
   background-color: #F8F8F8;
@@ -36,9 +36,12 @@ input {
   justify-content: space-between;
   font-size: 32rpx;
   font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+  padding: 20rpx 0;/* 会影响全局*/
+  box-sizing: border-box;
 }
+
 .page-head{
-  padding: 60rpx 50rpx 80rpx;
+  padding: 0rpx 30rpx 40rpx;
   text-align: center;
 }
 .page-head-title{
@@ -226,3 +229,30 @@ input {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+/*!
+ * WeUI v2.3.0 (https://github.com/weui/weui-wxss)
+ * Copyright 2020 Tencent, Inc.
+ * Licensed under the MIT license
+ */
+ .placeholder{
+  margin:5px;
+  padding:0 10px;
+  text-align:center;
+  background-color:var(--weui-BG-1);
+  height:2.3em;
+  line-height:2.3em;
+  color:var(--weui-FG-1);
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.button-sp-area{
+  padding-top:15px;
+  text-align:center;
+
+}
+.weui-btn_mini{
+  margin-right:4px;
+}
+image{height:50px}

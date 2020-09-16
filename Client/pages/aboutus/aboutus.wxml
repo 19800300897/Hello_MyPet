@@ -5,7 +5,7 @@
   bgColor="transparent"
 ></nav>
 
-<image src='aboutus.png' mode='aspectFill' class='bg-header-img'></image>
+<image src='../images/aboutus.png' mode='aspectFill' class='bg-header-img'></image>
 
 <container>
   <!-- 内容 -->

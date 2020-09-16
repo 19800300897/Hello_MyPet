@@ -1,0 +1,15 @@
+	<view class='page-body' >
+		<block wx:for="{{datalist}}"  wx:key='_id'>
+			<view class='item {{item.state==1?"active":""}}' data-num="{{item._id}}"  data-detailid="{{item._id}}" bindtap="toDetail">
+				<image class='poster' src="{{item._image}}"></image>
+				<view class='meta'>
+					<text class='title'>{{item._titles}}</text>
+          	<view class='artists'>
+						<text>作者：</text>
+						<text >{{item._author}}</text>
+					</view>
+					<text class='sub-title'>{{item._intro}}</text>
+				</view>
+			</view>
+		</block>
+	</view>

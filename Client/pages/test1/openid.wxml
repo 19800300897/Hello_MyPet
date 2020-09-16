@@ -1,14 +1,23 @@
 <!--pages/index/page02.wxml-->
 <view class='container'>
-<image class="b_image" src="image/b_image.jpg"></image>
+<image class="b_image" src="../images/b_image.jpg"></image>
 <view class='weather-wrapper'>
-
+<view class="progress" bindtap="refresh">
+<view wx:if="{{rank<=40}}">初级铲屎官</view>
+<view wx:elif="{{rank>40&&rank<=70}}">中级铲屎官</view>
+<view wx:elif="{{rank>70&&rank<=99}}">高级铲屎官</view>
+<view wx:elif="{{rank>=100}}">优秀毕业铲屎官</view><!--就算超过100，也还是显示100的-->
+<progress percent="{{rank}}"  stroke-width="12" active="true" color="#FC9D9A" show-info/>
+<view class="greencard" wx:if="{{greencard==1}}">已获得绿卡</view>
+<text bindtap="gotoFinal" class="greencard" wx:if="{{greencard==-1}}">去获得绿卡</text>
+</view>
 	<view class="dog_vs1">
+	<!--	<view bindtap="refresh">刷新（暂时放一下）</view>-->
 		<view>
-			<label>宠物档案</label>
+			<label bindtap="showFile">宠物档案</label>
 		</view>
 	</view>
-	<view class="dog_vs">
+	<view class="dog_vs" wx:if="{{showFile}}">
 		<view>
 			<label>{{pname}}</label>
 		</view>
@@ -17,39 +26,44 @@
 		</view>
 		<view>
 			<label>{{age}}</label>
-		</view>
+		</view>			
 	</view>
 
 	<view class="i_pos">
-		<image src="{{queryPath}}" mode='widthFix' class="i_mage"></image>
+		<image bindtap="toSpeak" src="{{queryPath}}" mode='widthFix' class="i_mage"></image>
 	</view>
-
 	<view class="v_button">
-		<view class="vb">
-			<button class='btn1'>
-				<image class='btnImg' src='image/icon_05.png'></image>
-				<view>聊天</view>
+	<button class='btn1 hai_btn' bindtap="toEat">
+	<image class="btnImg" src='../images/food.png'></image>
+	<view>投喂</view>
+	</button>
+	<!--<button class='btn1 hai_btn1' bindtap="toSpeak">
+	<image class="btnImg1" src='../images/speak.png'></image>
+	<view>嗦话</view>
+	</button>-->	
+			<button class='btn1' bindtap="onGotWalk">
+				<image class='btnImg' src='../images/icon_05.png'></image>
+				<view>遛弯</view>
 			</button>
-		</view>
-		<view class="vb">
-			<button class='btn2'>
-				<image class='btnImg' src='image/icon_05.png'></image>
-				<view>合照</view>
+			<button class='btn2' bindtap="onCamera">
+				<image class='btnImg' src='../images/icon_05.png'></image>
+				<view>AR躲猫猫</view>
 			</button>
-		</view>
-		<view class="vb">
+
 			<button class='btn3' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
-				<image class='btnImg' src='image/icon_05.png'></image>
+				<image class='btnImg' src='../images/icon_05.png'></image>
 				<view>生成海报</view>
 			</button>
-		</view>
-
+			<button class='btn3'bindtap="gotoLogs">
+				<image class='btnImg' src='../images/icon_05.png'></image>
+				<view>饲养指南</view>
+			</button>
 	</view> 
           <view class="weui-footer weui-footer_fixed-bottom">
             <view class="weui-footer__links">
-                <navigator url="../aboutus/aboutus" class="weui-footer__link">萌宠创造营</navigator>
+                <navigator url="../aboutus/aboutus" class="weui-footer__link">萌宠创造营</navigator><text>\|\|</text><navigator url="../aboutus/ruying/ruying" class="weui-footer__link">入营指南</navigator>
             </view>
-            <view class="weui-footer__text">Copyright © 萌宠管理局</view>
+            <view class="weui-footer__text">Copyright © 我是咸鱼</view>
         </view>
 </view>
   <!--保存至相册，主界面不会显示的  -->
@@ -63,4 +77,12 @@
       <canvas  style="width: 375px;height: 667px;position:fixed;" canvas-id="mycanvas"/>
   </view>  
   </view> 
+
+	    <mp-dialog title="可以参加萌创结业考试咯！" show="{{dialogShow}}" bindbuttontap="tapDialogButtonfinal" buttons="{{buttons}}">
+        <view>考试成绩合格就可以获得由萌宠管理局发放的【养宠绿卡】哦</view>
+    </mp-dialog>
+		 <mp-dialog title="{{pname}}：" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton" buttons="{{oneButton}}">
+        <view wx:if="{{food<=4}}">谢谢主人！真好吃！（不要喂我超过四次哦~</view>
+				<view wx:if="{{food>4}}">好啦好啦！我快撑死了...╭(╯^╰)╮</view>
+</mp-dialog>
 </view>

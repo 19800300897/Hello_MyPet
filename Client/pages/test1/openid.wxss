@@ -18,17 +18,16 @@ page {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -999;
+  z-index: -1;
 }
 
-
 .i_mage {
-  width: 330rpx;
+  width: 430rpx;/*330rpx*/
   height: auto;
 }
 
 .i_pos {
-  padding-top: 25%;
+  padding-top: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,16 +35,16 @@ page {
 
 .dog_vs1{
   overflow: hidden;
-  margin-top: 20rpx;
-  left: 44rpx;
+  margin-top: 10rpx;
+  left: 48rpx;
   position: absolute;
-  top: 15%;
+  top: 13%;
 }
 .dog_vs {
   /*text-align: left;*/
   overflow: hidden;
-  margin-top: 20rpx;
-  left: 44rpx;
+  margin-top: 10rpx;
+  left: 55rpx;
   position: absolute;
   top: 20%;
 }
@@ -54,16 +53,16 @@ page {
 .dog_vs label {
   display: row;
   padding: 0 10rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  font-size: 28rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 30rpx;
   color: rgb(236, 144, 32);
 }
 .dog_vs1 label {
   display: row;
   padding: 0 10rpx;
-  height: 60rpx;
-  line-height: 60rpx;
+  height: 30rpx;
+  line-height: 30rpx;
   font-size: 40rpx;
   color: rgb(159,125,80);
 }
@@ -75,18 +74,15 @@ page {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  width: 70%;
-  height: 70%;
-  padding-top: 20rpx;
-}
-.vb {
-  width: 150rpx;
-  height: 200rpx;
+  width: 100%;/*跟左、上边的距离*/
+  height: 100%;
+  /*padding-top: 20rpx;*/
 }
 .v_button .btn1,
 .v_button .btn2,
 .v_button .btn3 {
   display: inline-block;
+  padding: 8rpx 30rpx;
 }
 
 .btn1 {
@@ -106,6 +102,10 @@ page {
 .btnImg {
   width: 50rpx;
   height: 50rpx;
+}
+.btnImg1 {/*说话这个图标太小了看着 */
+  width: 70rpx;
+  height: 70rpx;
 }
 
 .btn1::after {
@@ -143,6 +143,7 @@ page {
   align-items: center;
   justify-content: center;
   font-size: 30rpx;
+  padding: 8px 12px;/*一行显示4个字*/
 }
 
 .btn3::after {
@@ -238,4 +239,25 @@ button[class="quxiao"]::after{
 }
 .mask{
   margin-top: 800px;
+}
+.progress{
+  width: 220rpx;
+  margin-left: 440rpx;
+  font-size: 30rpx;
+  color: #FC9D9A;
+}
+.greencard{
+  color:#83AF9B;
+}
+.hai_btn{
+  position:absolute;
+  top:40%;
+  left:60%;
+  z-index:2;/*之前是100，在生成海报上面显示了，所以下调了一下哈*/
+  }
+.hai_btn1{
+  position: absolute;
+  top: 40%;
+  right: 60%;
+  z-index: 2;
 }
